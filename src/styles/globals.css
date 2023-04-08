@@ -16,6 +16,11 @@
   }
 }
 
+html {
+  scroll-behavior: auto;
+  scroll-padding-top: 6rem;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
