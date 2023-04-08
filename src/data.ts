@@ -76,8 +76,8 @@ export const products: Product[] = [
     id: "limoncello",
     price: 899,
     colors: {
-      primary: "hsl(44, 89%, 70%)",
-      secondary: "hsl(34, 72%, 63%)",
+      primary: "hsl(44, 95%, 65%)",
+      secondary: "hsl(34, 72%, 60%)",
     },
     marketingImages: [
       "limoncello_marketing_0.jpeg",
@@ -136,8 +136,8 @@ export const products: Product[] = [
     id: "rosso_veneziano",
     price: 899,
     colors: {
-      primary: "hsl(4, 80%, 54%)",
-      secondary: "hsl(12, 81%, 61%)",
+      primary: "hsl(4, 80%, 50%)",
+      secondary: "hsl(30, 80%, 55%)",
     },
     marketingImages: [
       "rosso_veneziano_marketing_0.jpeg",
@@ -176,8 +176,8 @@ export const products: Product[] = [
     id: "verde_toscana",
     price: 899,
     colors: {
-      primary: "hsl(96, 42%, 45%)",
-      secondary: "hsl(30, 75%, 50%)",
+      primary: "hsl(96, 42%, 50%)",
+      secondary: "hsl(30, 80%, 55%)",
     },
     marketingImages: [
       "verde_toscana_marketing_0.jpeg",
