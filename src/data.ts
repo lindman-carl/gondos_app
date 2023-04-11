@@ -5,8 +5,8 @@ export type Product = {
     primary: string;
     secondary: string;
   };
-  marketingImages?: string[];
-  productImages?: string[];
+  marketingImages: string[];
+  productImages: string[];
   price: number;
 };
 
