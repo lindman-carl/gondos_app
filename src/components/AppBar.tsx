@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
+import { useCart } from "@/store/store";
 
 type Props = {
   staticBar: boolean;
 };
 
 const AppBar = ({ staticBar }: Props) => {
+  const cartItems = useCart((state) => state.items);
+
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
   useEffect(() => {
     // handle scroll event
     // set bar to fixed when scrolled past 100vh
@@ -41,20 +46,36 @@ const AppBar = ({ staticBar }: Props) => {
   return (
     <div
       id="app-bar"
-      className="top-0 z-40 flex h-16 w-full flex-row items-center justify-between bg-slate-100 bg-opacity-25 px-4 text-shop-text shadow backdrop-blur-md"
+      className="top-0 z-40 grid h-16 w-full grid-cols-3 bg-slate-100 bg-opacity-25 px-4 text-shop-text shadow backdrop-blur-md"
     >
-      <HamburgerMenu />
-      <Link href="/">
-        <Image
-          src="/images/logo.png"
-          alt="gondos logo"
-          width={80}
-          height={80}
-          className="drop-shadow"
-          priority
-        />
-      </Link>
-      <CartSVG />
+      <div className="flex items-center justify-start">
+        <HamburgerMenu />
+      </div>
+      <div className="flex items-center justify-center">
+        <Link href="/">
+          <Image
+            src="/images/logo.png"
+            alt="gondos logo"
+            width={80}
+            height={80}
+            className="drop-shadow"
+            priority
+          />
+        </Link>
+      </div>
+      <div className="flex items-center justify-end">
+        <Link
+          href="/cart"
+          className="relative flex min-w-min items-center justify-center pr-4"
+        >
+          <div className="absolute">
+            <CartSVG />
+          </div>
+          <span className="absolute z-50 pt-1 text-sm font-bold text-white">
+            {totalItems > 0 && totalItems}
+          </span>
+        </Link>
+      </div>
     </div>
   );
 };
