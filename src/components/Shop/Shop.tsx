@@ -20,9 +20,8 @@ const popularityOrder = [
 ];
 
 const Shop = () => {
-  const [productOrder, setProductOrder] = useState(popularityOrder);
   const [productsOrdered, setProductsOrdered] = useState(
-    productOrder.map((id) => products.find((product) => product.id === id))
+    popularityOrder.map((id) => products.find((product) => product.id === id))
   );
 
   const handleOrderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
