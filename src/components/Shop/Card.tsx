@@ -86,6 +86,9 @@ const Card = ({ name, id, colors, marketingImages }: Product) => {
           onChange={(index) => {
             setCurrentIndex(index);
           }}
+          onSwipeStart={() => {
+            setAutoPlay(false);
+          }}
         >
           {marketingImages &&
             marketingImages.map((image, index) => (
