@@ -9,6 +9,7 @@ import { products } from "@/data";
 // components
 import AppBar from "@/components/AppBar";
 import { useState } from "react";
+import Link from "next/link";
 
 type Props = {
   item: CartItem;
@@ -85,8 +86,11 @@ const CartPage = () => {
   return (
     <>
       <AppBar staticBar={true} />
-      <div className="b flex flex-col items-center justify-center bg-white px-8 pb-16 text-shop-text">
-        <h1 className="mt-24 pb-8 text-4xl font-bold">
+      <div className="flex w-full flex-col items-stretch justify-center bg-white px-4 pt-16 text-shop-text">
+        <Link href="/#shop_component" className="py-2" scroll={false}>
+          <span className="text-sm">{"<"} Back to shop</span>
+        </Link>
+        <h1 className="pb-8 text-2xl font-bold">
           Cart ({totalItems} products)
         </h1>
         <div className="flex w-full flex-col items-stretch justify-center gap-y-4 divide-y">
@@ -96,8 +100,10 @@ const CartPage = () => {
         </div>
         <div className="mt-8 flex w-full flex-col items-end justify-end">
           <span className="text-lg font-bold">Total: {totalValue} SEK</span>
-          <button className="bg-shop-primary mt-4 rounded px-4 py-2 text-white">
-            Checkout
+          <button className="my-4 flex w-full justify-center rounded bg-slate-800 px-8 py-3 text-white shadow">
+            <span className="text-sm font-bold tracking-wider">
+              Proceed to checkout
+            </span>
           </button>
         </div>
       </div>
