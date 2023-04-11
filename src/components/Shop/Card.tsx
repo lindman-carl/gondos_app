@@ -14,7 +14,7 @@ import { useCart } from "@/store/store";
 // dev data
 const sizes = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45];
 
-const Card = ({ name, id, colors, marketingImages }: Product) => {
+const Card = ({ name, id, colors, marketingImages, price }: Product) => {
   const [autoPlay, setAutoPlay] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -118,7 +118,7 @@ const Card = ({ name, id, colors, marketingImages }: Product) => {
         </div>
         <div className="flex w-full flex-row items-center justify-around">
           <span className="w-20 text-right text-lg font-bold tracking-wide">
-            899 kr
+            {price} sek
           </span>
           <div className="rounded bg-slate-200 p-2 shadow-inner">
             <select className="w-20 bg-transparent" onChange={handleSizeChange}>
