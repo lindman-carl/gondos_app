@@ -113,7 +113,7 @@ function OrderBy({
 
 function Container({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative min-h-screen w-full bg-shop-bg shadow-inner">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-start bg-shop-bg shadow-inner">
       {children}
     </div>
   );
@@ -121,7 +121,7 @@ function Container({ children }: { children: React.ReactNode }) {
 
 function CardGrid({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col items-center justify-center py-4">
+    <div className="grid grid-cols-1 py-4 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3">
       {children}
     </div>
   );

@@ -71,13 +71,13 @@ const Card = ({ name, id, colors, marketingImages, price }: Product) => {
   return (
     <div
       id={id}
-      className="anchor-offset my-4 flex flex-col items-center justify-center rounded-lg bg-slate-50 text-shop-text shadow-md"
+      className="anchor-offset my-4 flex w-min flex-col items-center justify-center rounded-lg bg-slate-50 text-shop-text shadow-md"
     >
-      <div className="relative flex h-[80vw] w-[80vw] flex-col items-center justify-center rounded-lg ">
+      <div className="relative flex h-[80vw] w-[80vw] flex-col items-center justify-center rounded-lg sm:max-h-80 sm:w-80">
         <Carousel
           showThumbs={false}
-          className="h-[80vw] w-[80vw]"
-          autoPlay={autoPlay}
+          className="h-full w-full"
+          autoPlay={false}
           showStatus={false}
           infiniteLoop
           interval={3000}
@@ -92,18 +92,18 @@ const Card = ({ name, id, colors, marketingImages, price }: Product) => {
         >
           {marketingImages &&
             marketingImages.map((image, index) => (
-              <div key={index} className="h-[80vw] w-[80vw]">
+              <div key={index} className="h-full w-full sm:h-80 sm:w-80">
                 <img
                   src={`images/shoes/${id}/${image}`}
                   alt={name}
-                  className="h-[80vw] w-[80vw] rounded-t-lg object-cover"
+                  className="h-full w-full rounded-t-lg object-cover"
                   // loading="lazy"
                 />
               </div>
             ))}
         </Carousel>
       </div>
-      <div className=" flex h-full w-[80vw] flex-col  items-start justify-center gap-y-4 p-4">
+      <div className=" flex h-full w-full flex-col  items-start justify-center gap-y-4 p-4">
         {marketingImages && (
           <ImageIndexIndicator
             max={marketingImages.length}
