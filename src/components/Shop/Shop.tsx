@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // components
 import Card from "@/components/Shop/Card";
 import AppBar from "@/components/AppBar";
@@ -5,9 +7,69 @@ import AppBar from "@/components/AppBar";
 // data
 import { products } from "@/data";
 
+const popularityOrder = [
+  "verde_toscana",
+  "blu_dolomiti",
+  "grigio_amalfi",
+  "limoncello",
+  "rosa_cardinale",
+  "nero_imperiale",
+  "grigio_petrolio",
+  "verde_laguna",
+  "rosso_veneziano",
+];
+
 const Shop = () => {
+  const [productOrder, setProductOrder] = useState(popularityOrder);
+  const [productsOrdered, setProductsOrdered] = useState(
+    productOrder.map((id) => products.find((product) => product.id === id))
+  );
+
   const handleOrderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value);
+    switch (e.target.value) {
+      case "popularity":
+        setProductsOrdered(
+          popularityOrder.map((id) =>
+            products.find((product) => product.id === id)
+          )
+        );
+        break;
+      case "asc":
+        setProductsOrdered(
+          products
+            .sort((a, z) => a.name.localeCompare(z.name))
+            .map((product) => product.id)
+            .map((id) => products.find((product) => product.id === id))
+        );
+        break;
+      case "desc":
+        setProductsOrdered(
+          products
+            .sort((a, z) => z.name.localeCompare(a.name))
+            .map((product) => product.id)
+            .map((id) => products.find((product) => product.id === id))
+        );
+        break;
+      case "price_asc":
+        setProductsOrdered(
+          products
+            .sort((a, z) => a.price - z.price)
+            .map((product) => product.id)
+            .map((id) => products.find((product) => product.id === id))
+        );
+        break;
+      case "price_desc":
+        setProductsOrdered(
+          products
+            .sort((a, z) => z.price - a.price)
+            .map((product) => product.id)
+            .map((id) => products.find((product) => product.id === id))
+        );
+        break;
+      default:
+        // TODO: handle error
+        break;
+    }
   };
   return (
     <Container>
@@ -15,9 +77,10 @@ const Shop = () => {
       <ProductDescription />
       <OrderBy handleChange={handleOrderChange} />
       <CardGrid>
-        {products.map((product) => (
-          <Card key={product.id} {...product} />
-        ))}
+        {productsOrdered.map((product) => {
+          if (!product) return null;
+          return <Card key={product.id} {...product} />;
+        })}
       </CardGrid>
     </Container>
   );
@@ -39,7 +102,8 @@ function OrderBy({
           onChange={handleChange}
         >
           <option value="popularity">Popularity</option>
-          <option value="price">Price</option>
+          <option value="price_asc">Price (low to high)</option>
+          <option value="price_desc">Price (high to low)</option>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
         </select>
