@@ -114,7 +114,7 @@ export const products: Product[] = [
   {
     name: "Verde Laguna",
     id: "verde_laguna",
-    price: 899,
+    price: 699,
     colors: {
       primary: "hsl(43, 35%, 40%)",
       secondary: "hsl(288, 3%, 56%)",
@@ -154,7 +154,7 @@ export const products: Product[] = [
   {
     name: "Grigio Amalfi",
     id: "grigio_amalfi",
-    price: 899,
+    price: 499,
     colors: {
       primary: "hsl(216, 9%, 70%)",
       secondary: "hsl(332, 65%, 58%)",
