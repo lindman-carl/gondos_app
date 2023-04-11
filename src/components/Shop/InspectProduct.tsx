@@ -47,6 +47,7 @@ const InspectProduct = ({
               <img
                 src={`/images/shoes/${id}/${image}`}
                 className="h-full w-full object-cover drop-shadow-md"
+                alt={name}
               />
             </div>
           ))}

@@ -63,7 +63,9 @@ const CartItemCard = ({ item }: Props) => {
             }}
           >
             {quantityOptions.map((option) => (
-              <option value={option}>{option}</option>
+              <option key={option} value={option}>
+                {option}
+              </option>
             ))}
           </select>
         </div>
@@ -95,7 +97,7 @@ const CartPage = () => {
         </h1>
         <div className="flex w-full flex-col items-stretch justify-center gap-y-4 divide-y">
           {cartItems.map((item) => (
-            <CartItemCard item={item} />
+            <CartItemCard key={item.id} item={item} />
           ))}
         </div>
         <div className="mt-8 flex w-full flex-col items-end justify-end">

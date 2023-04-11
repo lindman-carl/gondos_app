@@ -41,7 +41,7 @@ const AppBar = ({ staticBar }: Props) => {
     }
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [staticBar]);
 
   return (
     <div
