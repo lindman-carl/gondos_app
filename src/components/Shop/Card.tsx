@@ -97,7 +97,7 @@ const Card = ({ name, id, colors, marketingImages, price }: Product) => {
                   src={`images/shoes/${id}/${image}`}
                   alt={name}
                   className="h-[80vw] w-[80vw] rounded-t-lg object-cover"
-                  loading="lazy"
+                  // loading="lazy"
                 />
               </div>
             ))}
