@@ -11,16 +11,16 @@ type Props = {};
 
 const Hero = ({}: Props) => {
   return (
-    <div className={`h-[100vh] w-full`}>
+    <div className="relative h-[100vh] w-full">
       <Image
         src="/images/hero-bg.jpg"
         alt="Hero"
         fill
-        className="-z-10 object-cover object-top "
+        className="-z-10 object-cover object-top"
       />
       <div className="grid h-full w-full grid-cols-1 grid-rows-3 bg-black bg-opacity-25 p-4">
         <div className="row-span-1 row-start-1 flex w-full flex-col items-center justify-start drop-shadow-lg  invert">
-          <div className=" mb-8 flex w-full flex-row items-center justify-between gap-x-4 px-8 py-2 text-base font-bold tracking-wide text-black">
+          <div className=" mb-20 flex w-full flex-row items-center justify-between gap-x-4 px-8 py-2 text-base font-bold tracking-wide text-black">
             <Link href="/contact">Contact</Link>
             <Link href="/about">About us</Link>
             <Link href="/heritage">Heritage</Link>
