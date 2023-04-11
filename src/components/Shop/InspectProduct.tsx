@@ -21,7 +21,7 @@ const InspectProduct = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <div className="flex min-h-screen flex-col items-stretch justify-start bg-white pt-20 text-shop-text">
+    <div className="flex min-h-screen flex-col items-stretch justify-start bg-white pt-16 text-shop-text">
       <Link href={`/#${id}`} className="py-2" scroll={false}>
         <span className="px-4 text-sm">{"<"} Back to shop</span>
       </Link>
