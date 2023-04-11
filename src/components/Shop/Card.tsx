@@ -9,10 +9,21 @@ import ColorBadge from "@/components/Shop/ColorBadge";
 
 // data
 import { Product } from "@/data";
+import { useCart } from "@/store/store";
+
+// dev data
+const sizes = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45];
 
 const Card = ({ name, id, colors, marketingImages }: Product) => {
   const [autoPlay, setAutoPlay] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // size
+  const [size, setSize] = useState(36);
+
+  // cart
+  const { addItemToCart, items, changeItemQuantity } = useCart();
+  // const addItemToCart = useCart((state) => state.addItemToCart);
 
   // autoplay the carousel when the card is in the view
   useEffect(() => {
@@ -36,6 +47,26 @@ const Card = ({ name, id, colors, marketingImages }: Product) => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // handlers
+  const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSize(parseInt(e.target.value));
+  };
+
+  const handleAddToCart = () => {
+    // check if item is already in cart
+    // if item is already in cart, increase quantity by 1
+    // if item is not in cart, add it to cart
+    const item = items.find(
+      (item) => item.productId === id && item.size === size
+    );
+    if (item) {
+      console.log("item already in cart");
+      changeItemQuantity(item.id, item.quantity + 1);
+    } else {
+      addItemToCart(id, size, 1);
+    }
+  };
 
   return (
     <div
@@ -87,21 +118,19 @@ const Card = ({ name, id, colors, marketingImages }: Product) => {
             899 kr
           </span>
           <div className="rounded bg-slate-200 p-2 shadow-inner">
-            <select className="w-20 bg-transparent">
-              <option value="36">36</option>
-              <option value="37">37</option>
-              <option value="38">38</option>
-              <option value="39">39</option>
-              <option value="40">40</option>
-              <option value="41">41</option>
-              <option value="42">42</option>
-              <option value="43">43</option>
-              <option value="44">44</option>
-              <option value="45">45</option>
+            <select className="w-20 bg-transparent" onChange={handleSizeChange}>
+              {sizes.map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
             </select>
           </div>
         </div>
-        <button className="flex w-full justify-center rounded bg-slate-800 px-8 py-3 text-white shadow">
+        <button
+          className="flex w-full justify-center rounded bg-slate-800 px-8 py-3 text-white shadow"
+          onClick={handleAddToCart}
+        >
           <span className="text-sm font-bold tracking-wider">Add to cart</span>
         </button>
         <InspectProductButton productId={id} />
